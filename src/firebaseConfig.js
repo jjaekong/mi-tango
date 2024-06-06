@@ -15,4 +15,4 @@ const firebaseConfig = {
 
 
 // Firebase 앱 초기화
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
