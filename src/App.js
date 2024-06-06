@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home.js';
-import Login from './components/Login.js';
-import Admin from './components/Admin.js'; // 관리자 컴포넌트 임포트
+import Home from './views/User/Home.js';
+import Login from './views/User/Login.js';
+// Admin 컴포넌트를 lazy 로딩 방식으로 불러옵니다.
+const Dashboard = lazy(() => import('./views/Admin/Dashboard.js'));
 
 function App() {
     return (
         <Router>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/admin" element={<Admin />} /> {/* 관리자 페이지 라우트 추가 */}
-            </Routes>
+            <Suspense fallback={<div>Loading...</div>}> {/* 로딩 중 표시할 컴포넌트 */}
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    {/* 관리자 페이지 라우트 추가, lazy 로딩 적용 */}
+                    <Route path="/admin" element={<Dashboard />} />
+                </Routes>
+            </Suspense>
         </Router>
     );
 }

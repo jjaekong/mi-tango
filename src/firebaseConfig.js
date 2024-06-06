@@ -1,7 +1,7 @@
-import firebase from 'firebase/app';
-import 'firebase/auth'; // Firebase 모듈 중 사용할 기능을 import합니다.
-import 'firebase/firestore';
+// Firebase v9+ 모듈형 임포트 예시
+import { initializeApp } from 'firebase/app';
 
+// Firebase 설정 객체
 const firebaseConfig = {
     apiKey: "AIzaSyBjlBi8FCJF2CHKQcOx7OrN9J3PFM7_iyg",
     authDomain: "mi-tango-365.firebaseapp.com",
@@ -13,7 +13,6 @@ const firebaseConfig = {
     measurementId: "G-Q9KPWCTZ9N"
   };
 
-// Firebase 초기화
-firebase.initializeApp(firebaseConfig);
 
-export default firebase;
+// Firebase 앱 초기화
+const app = initializeApp(firebaseConfig);
