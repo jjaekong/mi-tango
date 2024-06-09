@@ -60,7 +60,7 @@ const NewMilonga = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                 </button>
-                <h1 className="text-xl font-bold ms-2">Create New Milonga</h1>
+                <h1 className="text-xl font-bold ms-4">Create New Milonga</h1>
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
@@ -91,7 +91,7 @@ const NewMilonga = () => {
                     <input
                         type="url"
                         id="milongaURL"
-                        value={'https://mi-tang.com/milonga/' + milongaId}
+                        value={`${window.location.protocol}//${window.location.host}/milonga/` + milongaId}
                         readOnly
                         className="border border-gray-300 px-4 py-2 rounded-md w-full focus:outline-none focus:border-blue-500 readonly:bg-gray-100"
                     />

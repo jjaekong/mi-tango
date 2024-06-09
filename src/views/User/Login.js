@@ -30,10 +30,20 @@ function Login() {
     }
 
     return (
-        <div>
-            <h1>로그인</h1>
-            <button onClick={handleSignInWithGoogle}>Sign in with Google</button>
-            <button onClick={handleSignInWithFacebook}>Sign in with Facebook</button>
+        <div className='p-5'>
+            <header className='flex items-center'>
+                <button onClick={() => window.history.back()}>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                </button>
+                <h1 className='ms-4'>Login</h1>
+            </header>
+            <h2 className='mt-4 text-center font-bold mb-4'>Sign in with</h2>
+            <ul className='w-[50%] mx-auto'>
+                <li className='mb-4'><button className="w-full rounded-full border border-slate-500 px-4 py-2" onClick={handleSignInWithGoogle}>Google</button></li>
+                <li className='mb-4'><button className="w-full rounded-full border border-slate-500 px-4 py-2" onClick={handleSignInWithFacebook}>Facebook</button></li>
+            </ul>
         </div>
     );
 }

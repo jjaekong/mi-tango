@@ -8,7 +8,8 @@ export const MilongaProvider = ({ children }) => {
 
     const { milongaId } = useParams();
 
-    const [milonga, setMilonga] = useState([]);
+    const [milonga, setMilonga] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchMilonga();
@@ -24,11 +25,14 @@ export const MilongaProvider = ({ children }) => {
         } else {
             console.log('No such milonga!');
         }
+
+        setLoading(false);
     };
 
     return (
         <MilongaContext.Provider value={milonga}>
-            {children}
+            {loading ? <>Loading</> :
+                milonga ? children : <>No such milonga</>}
         </MilongaContext.Provider>
     );
 };
