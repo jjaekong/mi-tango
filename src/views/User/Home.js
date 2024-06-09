@@ -67,7 +67,7 @@ export default function Home() {
                                         </div>
                                         <hr />
                                         <div className='pt-4 pb-2'>
-                                            <h2 class="text-sm px-4 mb-3 font-bold text-slate-500">Bookmarks</h2>
+                                            <h2 className="text-sm px-4 mb-3 font-bold text-slate-500">Bookmarks</h2>
                                             <div className='border-gray-200'>
                                                 <Link className="block px-4 py-2 hover:bg-slate-100 flex items-center" to="/following_milongas">
                                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline-block me-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

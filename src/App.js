@@ -16,7 +16,7 @@ function App() {
 
     return (
         <Router>
-            <Suspense fallback={<div>Loading...</div>}> {/* 로딩 중 표시할 컴포넌트 */}
+            <Suspense fallback={<div className='h-dvh fixed inset-0 flex items-center justify-center'>Loading...</div>}> {/* 로딩 중 표시할 컴포넌트 */}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={currentUser ? <Navigate to="/"/> : <Login />} />
