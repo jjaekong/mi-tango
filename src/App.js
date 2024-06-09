@@ -19,7 +19,7 @@ function App() {
                     <Route path="/login" element={currentUser ? <Navigate to="/"/> : <Login />} />
                     {/* 관리자 페이지 라우트 추가, lazy 로딩 적용 */}
                     <Route path="/admin" element={<Dashboard />} />
-                    <Route path="/newmilonga" element={currentUser ? <NewMilonga /> : <Navigate to="/login" />} />
+                    <Route path="/new_milonga" element={currentUser ? <NewMilonga /> : <Navigate to="/login" />} />
                 </Routes>
             </Suspense>
         </Router>
