@@ -1,5 +1,6 @@
 // Firebase v9+ 모듈형 임포트 예시
 import { initializeApp } from 'firebase/app';
+import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 // Firebase 설정 객체
 const firebaseConfig = {
@@ -15,4 +16,9 @@ const firebaseConfig = {
 
 
 // Firebase 앱 초기화
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+
+initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider('6LdLa_QpAAAAACBaD7XJ-FnTJOS68tVfK9XlfbTY'),
+    isTokenAutoRefreshEnabled: true
+});

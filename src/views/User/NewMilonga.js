@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
+import { useState } from 'react';
+import { serverTimestamp } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
 const NewMilonga = () => {
     const [milongaName, setMilongaName] = useState('');
@@ -12,12 +15,41 @@ const NewMilonga = () => {
         setMilongaId(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Add logic to save the Milonga information to the database
-        console.log('Milonga Name:', milongaName);
-        console.log('Milonga ID:', milongaId);
-        // Redirect or show success message
+
+        try {
+            const db = getFirestore();
+            const currentUser = getAuth().currentUser;
+
+            // 밀롱가 ID 중복 체크
+            const milongaDoc = await getDoc(doc(db, `${process.env.NODE_ENV}.milongas`, milongaId));
+            console.log(milongaDoc);
+            if (milongaDoc.exists()) {
+                alert('Milonga ID already exists!');
+                return;
+            }
+
+            await setDoc(doc(db, `${process.env.NODE_ENV}.milongas`, milongaId), {
+                milongaId: milongaId,
+                milongaName: milongaName,
+                createdAt: serverTimestamp(),
+                createdBy: currentUser.uid
+            });
+
+            // Document successfully written
+            alert('Milonga created successfully!');
+
+            // Reset the input fields
+            setMilongaId('');
+            setMilongaName('');
+
+            // Redirect to the newly created milonga URL
+            window.location.href = '/milonga/' + milongaId;
+        } catch (error) {
+            // An error occurred
+            console.error('Error creating milonga:', error);
+        }
     };
 
     return (
@@ -38,6 +70,7 @@ const NewMilonga = () => {
                         id="milongaName"
                         value={milongaName}
                         onChange={handleMilongaNameChange}
+                        required
                         className="border border-gray-300 px-4 py-2 rounded-md w-full focus:outline-none focus:border-blue-500"
                     />
                 </div>
@@ -47,7 +80,9 @@ const NewMilonga = () => {
                         type="text"
                         id="milongaId"
                         value={milongaId}
+                        required
                         onChange={handleMilongaIdChange}
+                        pattern="[A-Za-z0-9_-]{8,}"
                         className="border border-gray-300 px-4 py-2 rounded-md w-full focus:outline-none focus:border-blue-500"
                     />
                 </div>

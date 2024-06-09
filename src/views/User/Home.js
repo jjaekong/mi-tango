@@ -33,6 +33,10 @@ export default function Home() {
         }
     };
 
+    const handleBackdropClick = () => {
+        setIsDropdownOpen(false);
+    };
+
     return (
         <>
             <div className="p-5 container mx-auto px-4 sm:container sm:mx-auto sm:px-4">
@@ -45,16 +49,20 @@ export default function Home() {
                                 <p className='text-xl ml-2'>{currentUser.displayName}</p>
                             </div>
                             {isDropdownOpen && (
-                                <div className="p-4 bg-white shadow-md rounded-xl mt-2 absolute top-full right-0 w-[10rem]">
-                                    <Link to="/new_milonga">밀롱가 만들기</Link>
-                                    <button onClick={handleLogout}>로그아웃</button>
-                                </div>
+                                <>
+                                    <div className="fixed inset-0 z-10" onClick={handleBackdropClick}></div>
+                                    <div className="p-4 bg-white shadow-md rounded-xl mt-2 absolute top-full right-0 w-[10rem] z-20">
+                                        <Link to="/new_milonga">밀롱가 만들기</Link>
+                                        <button onClick={handleLogout}>로그아웃</button>
+                                    </div>
+                                </>
                             )}
                         </div>
                     ) : (
                         <Link to="/login">로그인</Link>
                     )}
                 </header>
+                <Link to="/milonga/luminoso">루미노소</Link>
             </div>
         </>
     );
