@@ -39,7 +39,7 @@ export default function Home() {
 
     return (
         <>
-            <div className="p-5 container mx-auto px-4 sm:container sm:mx-auto sm:px-4">
+            <div className="p-6 container">
                 <header className='flex items-center justify-between'>
                     <h1 className='font-bold'>Mi Tango</h1>
                     {currentUser ? (
@@ -51,7 +51,8 @@ export default function Home() {
                             {isDropdownOpen && (
                                 <>
                                     <div className="fixed inset-0 z-10" onClick={handleBackdropClick}></div>
-                                    <div className="bg-white shadow rounded-xl mt-2 absolute top-full right-0 w-[10rem] z-20">
+                                    <nav className="bg-white shadow rounded-xl mt-2 absolute top-full right-0 w-[12rem] z-20">
+                                        <h1 className='sr-only'>Menu</h1>
                                         <div className='px-4 py-3'>
                                             <p className="font-bold">{currentUser.displayName}</p>
                                             <p className="text-sm text-slate-500">{currentUser.email}</p>
@@ -64,7 +65,32 @@ export default function Home() {
                                                 <span>New Milonga</span>
                                             </Link>
                                         </div>
-                                        <div className='border-t border-gray-200'>
+                                        <hr />
+                                        <div className='pt-4 pb-2'>
+                                            <h2 class="text-sm px-4 mb-3 font-bold text-slate-500">Bookmarks</h2>
+                                            <div className='border-gray-200'>
+                                                <Link className="block px-4 py-2 hover:bg-slate-100 flex items-center" to="/following_milongas">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline-block me-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline-block me-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                                        </svg>
+                                                    </svg>
+                                                    <span className='flex-auto'>Milongas</span>
+                                                </Link>
+                                            </div>
+                                            <div className='border-gray-200'>
+                                                <Link className="block px-4 py-2 hover:bg-slate-100 flex items-center" to="/following_places">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline-block me-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline-block me-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                                        </svg>
+                                                    </svg>
+                                                    <span className='flex-auto'>Places</span>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div className='border-gray-200'>
                                             <button onClick={handleLogout} className='flex px-4 py-3 w-full items-center hover:bg-slate-100'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline-block me-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /> 
@@ -72,7 +98,7 @@ export default function Home() {
                                                 <span>Logout</span>
                                             </button>
                                         </div>
-                                    </div>
+                                    </nav>
                                 </>
                             )}
                         </div>

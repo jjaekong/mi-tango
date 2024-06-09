@@ -24,6 +24,8 @@ function App() {
                     <Route path="/admin" element={<Dashboard />} />
                     <Route path="/new_milonga" element={currentUser ? <NewMilonga /> : <Navigate to="/login" />} />
                     <Route path="/milonga/:milongaId" element={<MilongaProvider><Milonga /></MilongaProvider>} />
+                    {/* 404 페이지 처리 */}
+                    <Route path="*" element={<div>404 Not Found</div>} />
                 </Routes>
             </Suspense>
         </Router>
