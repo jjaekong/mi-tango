@@ -7,7 +7,7 @@ export default function Milonga() {
     const milonga= useMilonga();
 
     return (
-        <div>
+        <div className="p-6">
             <h1>{milonga.milongaName}</h1>
         </div>
     );

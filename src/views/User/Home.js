@@ -39,7 +39,7 @@ export default function Home() {
 
     return (
         <>
-            <div className="p-6 container">
+            <div className="p-6">
                 <header className='flex items-center justify-between'>
                     <h1 className='font-bold'>Mi Tango</h1>
                     {currentUser ? (
